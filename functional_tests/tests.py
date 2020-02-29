@@ -70,7 +70,7 @@ class NewVisitorTest(LiveServerTestCase):
         # explanatory text to that effect.
 
 
-        self.fail('Finish the test!')  
+        # self.fail('Finish the test!')  
 
         # She vists that URL and her list is still there
         # Satisfied, she goes back to sleep
@@ -100,7 +100,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('make a fly', page_text)
 
         # Francis starts a new list by entering new item
-        inputbox = self.browser.find_elements_by_id('id_new_item')
+        inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy Milk')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: Buy Milk')
@@ -111,7 +111,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotEqual(francis_list_url, edith_list_url)
 
         # Aagain there is no trace of Edith's items
-        page_text = self.browser.find_elements_by_tag_name('body').text
+        page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
 
